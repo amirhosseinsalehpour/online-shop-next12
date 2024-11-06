@@ -1,13 +1,16 @@
 import type { NextPage } from "next";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { client } from "../../lib/client";
+// import { client } from "../../lib/client";
 import { IProduct } from "../../lib/types/products";
 import ProductList from "../../components/productList/ProductList";
-import { ICategoryPathsParams } from "../../lib/types/pagePathsParams";
+// import { ICategoryPathsParams } from "../../lib/types/pagePathsParams";
+import { _PRODUCTS } from "../../mock/products";
 
 const categoryPage: NextPage<{
   products: IProduct[];
 }> = ({ products }) => {
+  console.log("categoryPage: ", products);
+
   return (
     <div>
       <ProductList productList={products} />
@@ -18,13 +21,18 @@ const categoryPage: NextPage<{
 export default categoryPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const query = `*[_type=="product"]{
-    "category":category[0]
-  }`;
-  const products = await client.fetch(query);
-  const paths = products.map((product: ICategoryPathsParams) => ({
+  // const query = `*[_type=="product"]{
+  //   "category":category[0]
+  // }`;
+  // const products = await client.fetch(query);
+  // const paths = products.map((product: ICategoryPathsParams) => ({
+  //   params: {
+  //     category: product.category,
+  //   },
+  // }));
+  const paths = _PRODUCTS.map((product) => ({
     params: {
-      category: product.category,
+      category: product.category[0],
     },
   }));
   return {
@@ -35,12 +43,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const category = context.params?.category;
-  const productQuery = `*[_type=='product'&& category[0]=="${category}"]`;
-  const products = await client.fetch(productQuery);
+  // const productQuery = `*[_type=='product'&& category[0]=="${category}"]`;
+  // const products = await client.fetch(productQuery);
 
   return {
     props: {
-      products: products,
+      products: _PRODUCTS.filter((p) => p.category[0] === category),
     },
   };
 };

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { favoriteActions } from "../../store/favorite-slice";
 import { cartActions } from "../../store/cart-slice";
 import { useLanguage } from "../../hooks/useLanguage";
-import { urlFor } from "../../lib/client";
+// import { urlFor } from "../../lib/client";
 import ProductPrice from "../UI/ProductPrice";
 import { BsCartPlus } from "react-icons/bs";
 import { HiOutlineTrash } from "react-icons/hi";
@@ -40,8 +40,9 @@ const FavoriteItem: React.FC<Props> = ({ product }) => {
           <div className="text-center">
             {product?.image[0] && (
               <Image
-                src={urlFor(product?.image[0]).url()}
-                alt="laptop image"
+                src="/images/cat.jpg"
+                // src={urlFor(product?.image[0]).url()}
+                alt={`${product?.image[0]}`}
                 width={200}
                 height={185}
                 className="object-contain hover:scale-105 transition-transform !p-2"

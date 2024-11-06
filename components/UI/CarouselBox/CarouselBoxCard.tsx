@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { urlFor } from "../../../lib/client";
+// import { urlFor } from "../../../lib/client";
 import { IProduct } from "../../../lib/types/products";
 import Link from "next/link";
 import ProductPrice from "../ProductPrice";
@@ -19,8 +19,9 @@ const CarouselBoxCard: React.FC<Props> = ({ product }) => {
           <div className="text-center flex-grow">
             {product?.image[0] && (
               <Image
-                src={urlFor(product?.image[0]).url()}
-                alt="laptop image"
+                // src={urlFor(product?.image[0]).url()}
+                src="/images/cat.jpg"
+                alt={`${product?.image[0]}`}
                 width={200}
                 height={185}
                 className="object-contain hover:scale-105 transition-transform !p-2"

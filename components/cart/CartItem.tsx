@@ -5,7 +5,7 @@ import { HiMinusSm, HiOutlinePlusSm, HiOutlineTrash } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useLanguage } from "../../hooks/useLanguage";
-import { urlFor } from "../../lib/client";
+// import { urlFor } from "../../lib/client";
 import { ICartRootState } from "../../lib/types/cart";
 import { IProduct } from "../../lib/types/products";
 import { cartActions } from "../../store/cart-slice";
@@ -49,10 +49,11 @@ const CartItem: React.FC<Props> = ({ product }) => {
           <a className="flex flex-wrap sm:flex-nowrap justify-center items-center flex-grow">
             <div className="sm:min-w-[100px] md:min-w-[130px]">
               <Image
-                src={urlFor(product?.image[0]).url()}
+                // src={urlFor(product?.image[0]).url()}
+                src="/images/cat.jpg"
                 width={200}
                 height={200}
-                alt={product.name}
+                alt={`${product?.image[0]}`}
                 className="object-contain"
               />
             </div>

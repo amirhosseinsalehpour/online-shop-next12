@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { specialOfferProductsActions } from "../store/specialOfferProducts-slice";
 import { newestProductsActions } from "../store/newestProduct-slice";
 
-import { client } from "../lib/client";
+// import { client } from "../lib/client";
 
 import Benefits from "../components/Benefits";
 import Carousel from "../components/carousel";
@@ -18,11 +18,12 @@ const Banners = dynamic(() => import("../components/banners"), { ssr: false });
 
 import { IProduct } from "../lib/types/products";
 import { newestProductsFn } from "../utilities/sortByTimeStamp";
+import { _PRODUCTS } from "../mock/products";
 
 const Home: NextPage<{ products: IProduct[] }> = ({ products }) => {
   const dispatch = useDispatch();
 
-  console.log(products);
+  console.log("Home: ", products);
   useEffect(() => {
     //add products to offers list
     const offersProducts = products.filter((item) => item.discount);
@@ -49,12 +50,12 @@ const Home: NextPage<{ products: IProduct[] }> = ({ products }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const productQuery = `*[_type=='product']`;
-  const products = await client.fetch(productQuery);
+  // const productQuery = `*[_type=='product']`;
+  // const products = await client.fetch(productQuery);
 
   return {
     props: {
-      products,
+      products: _PRODUCTS,
     },
   };
 };
