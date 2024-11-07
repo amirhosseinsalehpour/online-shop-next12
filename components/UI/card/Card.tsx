@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import StarRatingComponent from "react-star-rating-component";
+// import StarRatingComponent from "react-star-rating-component";
 import { IProduct } from "../../../lib/types/products";
 // import { urlFor } from "../../../lib/client";
 import CardActions from "./CardActions";
@@ -43,11 +43,11 @@ const Card: React.FC<Props> = ({ product }) => {
           <div className="flex flex-col justify-between  flex-grow  w-1/2 md:w-full  px-1 md:px-3 py-2 md:py-4">
             <div className="flex justify-center md:justify-start flex-col  flex-grow overflow-hidden">
               <div className="self-center">
-                <StarRatingComponent
+                {/* <StarRatingComponent
                   name={`product_rate_${product.slug.current}`}
                   starCount={5}
                   value={product.starRating}
-                />
+                /> */}
               </div>
               <h3 className="text-sm sm:text-[12px] md:text-sm text-center text-palette-mute  ">
                 {product.name}

@@ -1,5 +1,5 @@
 import React from "react";
-import StarRatingComponent from "react-star-rating-component";
+// import StarRatingComponent from "react-star-rating-component";
 import { useLanguage } from "../../hooks/useLanguage";
 import { IProduct } from "../../lib/types/products";
 import CallToAction from "./CallToAction";
@@ -19,18 +19,18 @@ const DetailsSection: React.FC<Props> = ({ product }) => {
       <div className="flex items-start flex-wrap relative">
         <div className="flex-grow mt-6">
           <div className="flex items-center self-center">
-            <StarRatingComponent
+            {/* <StarRatingComponent
               name="product_rate"
               starCount={5}
               value={product.starRating}
-            />
+            /> */}
             <p className="text-sm text-palette-mute rtl:mr-2 ltr:ml-2">
               {product.starRating} {t.stars}
             </p>
           </div>
           <h3 className="text-lg mt-2">{t.details}</h3>
           <div className="mt-4">
-            {Object.keys(product.details!).map((key) => {
+            {/* {Object.keys(product.details!).map((key) => {
               const detailsValue = Array.isArray(product.details![key])
                 ? [...product.details![key]].join(" - ")
                 : product.details![key] === true
@@ -53,7 +53,7 @@ const DetailsSection: React.FC<Props> = ({ product }) => {
                   </p>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
         <CallToAction product={product} />
