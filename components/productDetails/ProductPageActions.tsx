@@ -34,7 +34,6 @@ const ProductPageActions: React.FC<Props> = ({ product }) => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: product.title,
           text: "این محصول عالی را ببینید!",
           url: fullPath,
         });
