@@ -32,7 +32,6 @@ const ProductPageActions: React.FC<Props> = ({ product }) => {
     const fullPath = `${window.location.origin}/product/${product.slug.current}`;
 
     if (navigator.share) {
-      // استفاده از Web Share API در صورت پشتیبانی
       try {
         await navigator.share({
           title: product.title,
@@ -43,7 +42,6 @@ const ProductPageActions: React.FC<Props> = ({ product }) => {
         console.error("Error sharing:", error);
       }
     } else {
-      // کپی لینک در کلیپ‌بورد در صورت عدم پشتیبانی از Web Share API
       try {
         await navigator.clipboard.writeText(fullPath);
         toast.success("لینک کپی شد", {
