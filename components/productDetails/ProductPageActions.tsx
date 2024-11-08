@@ -6,12 +6,14 @@ import { IFavoriteRootState } from "../../lib/types/favorite";
 import { RiHeartFill, RiHeartAddLine, RiShareLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 
 interface Props {
   product: IProduct;
 }
 const ProductPageActions: React.FC<Props> = ({ product }) => {
   const { theme } = useTheme();
+  const router = useRouter();
 
   const dispatch = useDispatch();
   const favoriteItems = useSelector(
@@ -29,12 +31,12 @@ const ProductPageActions: React.FC<Props> = ({ product }) => {
   }
 
   async function shareOrCopyLink() {
-    const fullPath = `${window.location.origin}/product/${product.slug.current}`;
+    const fullPath = `${window.location.origin}${router.asPath}`;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          text: "این محصول عالی را ببینید!",
+          text: " \n محصولات فروشگاه مکیال !",
           url: fullPath,
         });
       } catch (error) {
