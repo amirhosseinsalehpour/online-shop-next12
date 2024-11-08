@@ -30,15 +30,6 @@ const About: NextPage = () => {
               color: "#A71B4A",
             }}
           />
-          &nbsp;
-          <a
-            href="https://cafedx.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-palette-side underline font-bold bg-palette-primary px-2"
-          >
-            CafeDX
-          </a>
         </p>
         <p className="my-4">{t.aboutEnjoy}</p>
         <p>{t.myName}</p>

@@ -24,6 +24,17 @@ const CardActions: React.FC<Props> = ({ product }) => {
   const { t } = useLanguage();
   const { theme } = useTheme();
 
+  async function copySlugToClipboard() {
+    try {
+      const fullPath = `${window.location.origin}/product/${product.slug.current}`;
+      await navigator.clipboard.writeText(fullPath);
+      toast.success("لینک کپی شد", {
+        theme: theme === "dark" ? "dark" : "light",
+      });
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  }
   const favoriteItems = useSelector(
     (state: IFavoriteRootState) => state.favorite.items
   );
@@ -58,7 +69,10 @@ const CardActions: React.FC<Props> = ({ product }) => {
           }}
         />
       </div>
-      <div className="hover:text-rose-600 transition-colors sm:px-3 md:px-0">
+      <div
+        className="hover:text-rose-600 transition-colors sm:px-3 md:px-0"
+        onClick={copySlugToClipboard}
+      >
         <RiShareLine style={{ fontSize: "1.2rem" }} />
       </div>
       <div
